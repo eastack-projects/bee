@@ -1,0 +1,115 @@
+openapi: 3.0.1
+info:
+  description: 'This spec is mainly for testing Petstore server and contains fake
+    endpoints, models. Please do not use this for any other purpose. Special characters:
+    " \'
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: OpenAPI Petstore
+  version: 1.0.0
+
+paths:
+components:
+  schemas:
+    Order:
+      example:
+        petId: 6
+        quantity: 1
+        id: 0
+        shipDate: 2000-01-23T04:56:07.000+00:00
+        complete: false
+        status: placed
+      properties:
+        id:
+          description: 用户唯一ID
+          format: int64
+          type: integer
+        petId:
+          description: Pet ID
+          format: int64
+          type: integer
+        quantity:
+          description: 用户购买数量{@link String}
+          format: int32
+          type: integer
+        shipDate:
+          description: 发货日期
+          format: date-time
+          type: string
+        status:
+          description: Order Status
+          enum:
+          - placed
+          - approved
+          - delivered
+          type: string
+        complete:
+          default: false
+          type: boolean
+      type: object
+      xml:
+        name: Order
+    Category:
+      example:
+        name: default-name
+        id: 6
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          default: default-name
+          type: string
+      required:
+      - name
+      type: object
+      xml:
+        name: Category
+    User:
+      example:
+        firstName: firstName
+        lastName: lastName
+        password: password
+        userStatus: 6
+        phone: phone
+        id: 0
+        email: email
+        username: username
+      properties:
+        id:
+          format: int64
+          type: integer
+          x-is-unique: true
+        username:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        phone:
+          type: string
+        userStatus:
+          description: User Status
+          format: int32
+          type: integer
+      type: object
+      xml:
+        name: User
+    Tag:
+      example:
+        name: name
+        id: 1
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+      type: object
+      xml:
+        name: Tag
